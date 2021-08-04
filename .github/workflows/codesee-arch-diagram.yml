@@ -1,4 +1,10 @@
-on: [push]
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, synchronize, reopened]
+
 name: CodeSee Map
 
 jobs:
@@ -14,3 +20,4 @@ jobs:
         uses: Codesee-io/codesee-map-action@latest
         with:
           api_token: ${{ secrets.CODESEE_ARCH_DIAG_API_TOKEN }}
+          github_ref: ${{ github.ref }}
